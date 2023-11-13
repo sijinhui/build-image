@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main
-
+    paths:
+      - 'logstash/**'
 jobs:
   deploy:
     name: 打包并上传
