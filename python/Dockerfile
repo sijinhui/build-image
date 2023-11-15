@@ -25,4 +25,3 @@ RUN apk add --no-cache \
 
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-
