@@ -35,6 +35,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/python:3.9.18-alpine
 
   upload_to_aliyun:
+    needs: deploy
     name: 上传镜像到阿里云
     runs-on: z4
     steps:
