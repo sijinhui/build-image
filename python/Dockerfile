@@ -35,4 +35,3 @@ RUN apk add tzdata \
     apk add py3-yaml
 
 RUN rm -rf /var/cache/apk/*
-
