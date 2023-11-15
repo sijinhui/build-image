@@ -21,5 +21,5 @@ jobs:
       - name: Sync repository to ALY
         run: |
           docker pull prometheusnet/docker_exporter
-          docker tag google/cadvisor:latest registry.cn-hangzhou.aliyuncs.com/${{ secrets.DOCKERHUB_USERNAME }}/docker_exporter
+          docker tag prometheusnet/docker_exporter registry.cn-hangzhou.aliyuncs.com/${{ secrets.DOCKERHUB_USERNAME }}/docker_exporter
           docker push registry.cn-hangzhou.aliyuncs.com/${{ secrets.DOCKERHUB_USERNAME }}/docker_exporter
