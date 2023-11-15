@@ -22,18 +22,10 @@ RUN apk add --no-cache \
        libffi-dev \
     && ln -s /usr/include/locale.h /usr/include/xlocale.h \
     && pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir pandas \
-    && apk --purge del .build-deps \
-RUN apk add tzdata \
-    apk add --virtual .build-deps build-base python3-dev libffi-dev openssl-dev \
-    apk add gcc musl-dev python3-dev libffi-dev openssl-dev cargo \
-    apk add cython \
-    apk add py3-yaml
 RUN find / -type f -iname \*.pyc -delete \
     && find / -type f -iname \*.pyo -delete \
     && find / -type f -iname __pycache__ -delete \
     && rm -rf /var/cache/apk/*
 
-RUN python -m pip install --upgrade pip
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
