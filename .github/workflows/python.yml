@@ -9,7 +9,8 @@ on:
 jobs:
   deploy:
     name: 打包并上传python
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
+    runs-on: z4
     steps:
       -
         name: Checkout

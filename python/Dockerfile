@@ -7,8 +7,8 @@ RUN apk add --no-cache \
        bash \
        make \
        curl \
-       libstdc++ \
-    && apk add --no-cache \
+       libstdc++
+RUN apk add --no-cache \
        --virtual .build-deps \
        gcc \
        musl-dev \
@@ -21,7 +21,7 @@ RUN apk add --no-cache \
        libressl-dev \
        libffi-dev \
     && ln -s /usr/include/locale.h /usr/include/xlocale.h \
-    && pip install --no-cache-dir --upgrade pip
 
+RUN pip install --no-cache-dir --upgrade pip
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
