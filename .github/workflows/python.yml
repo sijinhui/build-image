@@ -28,8 +28,8 @@ jobs:
       - name: Build and push multi-platform Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./logstash
-          file: ./logstash/Dockerfile
+          context: ./python
+          file: ./python/Dockerfile
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/python:3.9.18-alpine
