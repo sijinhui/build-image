@@ -1,0 +1,35 @@
+name: build python
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'python/**'
+jobs:
+  deploy:
+    name: 打包并上传python
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        # Add support for more platforms with QEMU (optional)
+        # https://github.com/docker/setup-qemu-action
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      - name: Build and push multi-platform Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./logstash
+          file: ./logstash/Dockerfile
+          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/python:3.9.18-alpine
