@@ -21,7 +21,7 @@ RUN apk add --no-cache \
        libc-dev \
        libressl-dev \
        libffi-dev \
-    && ln -s /usr/include/locale.h /usr/include/xlocale.h \
+       && ln -s /usr/include/locale.h /usr/include/xlocale.h
 
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
