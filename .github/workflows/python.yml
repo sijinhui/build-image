@@ -6,11 +6,12 @@ on:
       - main
     paths:
       - 'python/**'
+      - '.github/workflows/python.yml'
 jobs:
   deploy:
     name: 打包并上传python
-#    runs-on: ubuntu-latest
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+#    runs-on: self-hosted
     steps:
       -
         name: Checkout
@@ -38,6 +39,7 @@ jobs:
   upload_to_aliyun:
     needs: deploy
     name: 上传镜像到阿里云
+#    runs-on: ubuntu-latest
     runs-on: self-hosted
     steps:
       -
