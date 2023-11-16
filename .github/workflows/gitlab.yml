@@ -1,4 +1,4 @@
-name: build python
+name: build gitlab
 
 on:
   push:
