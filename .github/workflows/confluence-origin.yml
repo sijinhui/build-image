@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/docker_exporter.yml'
+      - '.github/workflows/confluence-origin.yml'
 jobs:
   upload_to_aliyun:
     name: 上传镜像到阿里云
