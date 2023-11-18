@@ -1,4 +1,4 @@
-name: upload prometheusnet/docker_exporter
+name: upload confluence-origin
 on:
   push:
     branches:
