@@ -9,7 +9,7 @@ on:
       - '.github/workflows/qinglong.yml'
 jobs:
   deploy:
-    name: 打包并上传python
+    name: 打包并上传qinglong
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

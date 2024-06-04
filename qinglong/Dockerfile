@@ -5,7 +5,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/re
 RUN apk update && apk add vim
 
 
-RUN curl -fsSL https://cdn.xiaosi.cc/gh/FlechazoPh/QLDependency/Shell/XinQLOneKey.sh | bash
+RUN curl -fsSL https://cdn.xiaosi.cc/jsd/gh/FlechazoPh/QLDependency/Shell/XinQLOneKey.sh | bash
 
 
 #RUN apk add --no-cache \
