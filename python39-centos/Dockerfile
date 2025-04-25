@@ -3,7 +3,7 @@ FROM centos:centos7.9.2009
 LABEL maintainer="sijinhui"
 
 # 安装基础工具和依赖
-RUN yum update -y && \
+RUN curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo && yum makecache && \
     yum install -y gcc openssl-devel bzip2-devel libffi-devel make wget tar && \
     yum clean all
 
