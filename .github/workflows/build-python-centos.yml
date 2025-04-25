@@ -16,7 +16,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          cd python-centos
+          cd python39-centos
           docker build -t python3.9-centos7 .
 
       - name: Extract Python package
