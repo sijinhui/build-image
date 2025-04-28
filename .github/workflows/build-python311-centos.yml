@@ -1,0 +1,58 @@
+name: Build Python CentOS
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'python311-centos/**'
+    branches:
+      - main
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          cd python311-centos
+          docker build -t python3.11-centos7 .
+
+      - name: Extract Python package
+        run: |
+          # 创建临时容器并复制文件
+          container_id=$(docker create python3.11-centos7)
+          docker start $container_id
+          docker exec $container_id /app/build.sh
+          
+          # 从容器中复制压缩包
+          mkdir -p artifacts
+          docker cp $container_id:/app/output/python3.11-centos7.tar.gz ./artifacts/
+          
+          # 清理容器
+          docker stop $container_id
+          docker rm $container_id
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: python3.11-centos7
+          path: artifacts/python3.11-centos7.tar.gz
+
+      - name: Create Release
+        if: github.ref == 'refs/heads/main'
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: artifacts/python3.11-centos7.tar.gz
+          name: Python 3.9 CentOS 7 Build
+          tag_name: python3.11-centos7-${{ github.sha }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
